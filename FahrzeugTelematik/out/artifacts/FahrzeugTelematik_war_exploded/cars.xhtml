@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:view>
+    <h:body>
+        <h1>Cars</h1>
+        <p:commandButton value="add" action="#{carsBean.startAdd()}"
+                         immediate="true"/>
+
+        <p:growl id="msgs" showDetail="true"/>
+        <p:dataTable var="car" value="#{carsBean.cars.car}" rowIndexVar="index" editable="true"
+                     id="carsTable">
+            <p:column headerText="ID">
+                <p:outputPanel>
+                    <h:outputText value="#{car.idCar}"/>
+                </p:outputPanel>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{car.name}"/>
+            </p:column>
+
+            <p:column headerText="Type">
+                <h:outputText value="#{car.type}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">Action</f:facet>
+                <p:commandButton value="Edit" action="#{carsBean.showDialog(car)}"
+                                 immediate="true"/>
+                <p:commandButton value="Delete"
+                                 action="#{carsBean.removeCar(car)}" update="carsTable">
+                </p:commandButton>
+                <p:commandButton value="View telemetry" action="#{navigationController.showPage}">
+                    <f:param name="pageId" value="2"/>
+                    <f:param name="carId" value="#{car.idCar}"/>
+                </p:commandButton>
+
+                <p:dialog header="Dialog" widgetVar="dlg" modal="true" dynamic="true" id="editDialog">
+                    <p:ajax event="close" listener="#{carsBean.handleClose}" update="carsTable msgs"/>
+                    <h:form id="form">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Id"/>
+                            <p:outputLabel value="#{carsBean.selectedCar.idCar}"/>
+
+                            <h:outputLabel value="Brand *"/>
+                            <p:inputText value="#{carsBean.selectedCar.name}" required="true">
+                                <p:ajax event="keyup"/>
+                            </p:inputText>
+
+                            <h:outputLabel value="Type *"/>
+                            <p:inputText value="#{carsBean.selectedCar.type}" required="true">
+                                <p:ajax event="keyup"/>
+                            </p:inputText>
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </p:column>
+        </p:dataTable>
+    </h:body>
+
+    <p:dialog header="Dialog" widgetVar="addDlg" modal="true" dynamic="true" id="addDialog">
+        <p:ajax event="close" listener="#{carsBean.handleAddClose}" update="carsTable msgs addDialog"/>
+        <h:form id="addForm">
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Id"/>
+                <p:outputLabel value="#{carsBean.selectedCar.idCar}"/>
+
+                <h:outputLabel value="Brand *"/>
+                <p:inputText value="#{carsBean.selectedCar.name}" required="true">
+                    <p:ajax event="keyup"/>
+                </p:inputText>
+
+                <h:outputLabel value="Type *"/>
+                <p:inputText value="#{carsBean.selectedCar.type}" required="true">
+                    <p:ajax event="keyup"/>
+                </p:inputText>
+            </p:panelGrid>
+        </h:form>
+    </p:dialog>
+
+    <h:form>
+        <p:panelGrid columns="1">
+            <h:commandButton value="Home" action="#{navigationController.showPage}"/>
+        </p:panelGrid>
+    </h:form>
+</f:view>
+</html>

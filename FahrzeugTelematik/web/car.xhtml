@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:view>
+    <h:body>
+        <h1>${carBean.car.name} ${carBean.car.type}</h1>
+        <p:commandButton value="add" action="#{carBean.startAdd()}"
+                         immediate="true"/>
+
+        <p:growl id="msgs" showDetail="true"/>
+        <p:dataTable var="telemetry" value="#{carBean.car.telemtryDataList.telemetryData}" rowIndexVar="index" editable="true"
+                     id="telemetryTable">
+            <p:column headerText="ID">
+                <p:outputPanel>
+                    <h:outputText value="#{telemetry.idTelemetryData}"/>
+                </p:outputPanel>
+            </p:column>
+            <p:column headerText="Latitude">
+                <h:outputText value="#{telemetry.latitude}"/>
+            </p:column>
+
+            <p:column headerText="Longitude">
+                <h:outputText value="#{telemetry.longitude}"/>
+            </p:column>
+
+            <p:column headerText="Speed">
+                <h:outputText value="#{telemetry.speed}"/>
+            </p:column>
+
+            <p:column headerText="Capacity">
+                <h:outputText value="#{telemetry.capacity}"/>
+            </p:column>
+        </p:dataTable>
+    </h:body>
+    <p:dialog header="Dialog" widgetVar="addDlg2" modal="true" dynamic="true" id="addDialog2">
+        <p:ajax event="close" listener="#{carBean.handleAddClose}" update="telemetryTable msgs addDialog2"/>
+        <h:form id="addForm">
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Id"/>
+                <p:outputLabel value="#{carBean.selectedTelemetryData.idTelemetryData}"/>
+
+                <h:outputLabel value="Latitude *"/>
+                <p:inputText value="#{carBean.selectedTelemetryData.latitude}" required="true">
+                    <p:ajax event="keyup"/>
+                </p:inputText>
+
+                <h:outputLabel value="Longitude *"/>
+                <p:inputText value="#{carBean.selectedTelemetryData.longitude}" required="true">
+                    <p:ajax event="keyup"/>
+                </p:inputText>
+
+                <h:outputLabel value="Speed *"/>
+                <p:inputText value="#{carBean.selectedTelemetryData.speed}" required="true">
+                    <p:ajax event="keyup"/>
+                </p:inputText>
+
+                <h:outputLabel value="Capacity *"/>
+                <p:inputText value="#{carBean.selectedTelemetryData.capacity}" required="true">
+                    <p:ajax event="keyup"/>
+                </p:inputText>
+            </p:panelGrid>
+        </h:form>
+    </p:dialog>
+
+    <h:form>
+        <p:panelGrid columns="1">
+            <h:commandButton value="Home" action="#{navigationController.showPage}"/>
+            <h:commandButton value="Cars" action="#{navigationController.showPage}">
+                <f:param name="pageId" value="1"/>
+            </h:commandButton>
+        </p:panelGrid>
+    </h:form>
+</f:view>
+</html>

@@ -1,0 +1,48 @@
+<carTelemetry xmlns="http://www.cartelemetry.org"
+              xmlns:xsdi="http://www.w3.org/2001/XMLSchema-instance"
+              xsdi:schemaLocation="http://www.emobility.org carTelemetry.xsd">
+    <cars>
+        <car>
+            <idCar>1</idCar>
+            <name>Tesla</name>
+            <type>Model X</type>
+            <telemtryDataList>
+                <telemetryData>
+                    <idTelemetryData>1</idTelemetryData>
+                    <latitude>0</latitude>
+                    <longitude>1</longitude>
+                    <speed>110</speed>
+                    <capacity>30</capacity>
+                </telemetryData>
+                <telemetryData>
+                    <idTelemetryData>2</idTelemetryData>
+                    <latitude>0.1</latitude>
+                    <longitude>1.1</longitude>
+                    <speed>110</speed>
+                    <capacity>38</capacity>
+                </telemetryData>
+            </telemtryDataList>
+        </car>
+        <car>
+            <idCar>2</idCar>
+            <name>Tesla</name>
+            <type>Model S</type>
+            <telemtryDataList>
+                <telemetryData>
+                    <idTelemetryData>1</idTelemetryData>
+                    <latitude>0</latitude>
+                    <longitude>1</longitude>
+                    <speed>110</speed>
+                    <capacity>50</capacity>
+                </telemetryData>
+                <telemetryData>
+                    <idTelemetryData>2</idTelemetryData>
+                    <latitude>0.1</latitude>
+                    <longitude>1.1</longitude>
+                    <speed>110</speed>
+                    <capacity>30</capacity>
+                </telemetryData>
+            </telemtryDataList>
+        </car>
+    </cars>
+</carTelemetry>

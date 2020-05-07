@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.cartelemetry.org" xmlns="http://www.cartelemetry.org">
+  <xs:element name="carTelemetry" type="carTelemetryType"/>
+  <xs:complexType name="telemetryDataType">
+    <xs:sequence>
+      <xs:element name="idTelemetryData" type="xs:int"/>
+      <xs:element name="latitude" type="xs:double"/>
+      <xs:element name="longitude" type="xs:double"/>
+      <xs:element type="xs:string" name="speed"/>
+      <xs:element name="capacity" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="telemtryDataListType">
+    <xs:sequence>
+      <xs:element type="telemetryDataType" name="telemetryData" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="carType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="idCar"/>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element name="type" type="xs:string"/>
+      <xs:element type="telemtryDataListType" name="telemtryDataList"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="carsType">
+    <xs:sequence>
+      <xs:element type="carType" name="car" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="carTelemetryType">
+    <xs:sequence>
+      <xs:element type="carsType" name="cars"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
