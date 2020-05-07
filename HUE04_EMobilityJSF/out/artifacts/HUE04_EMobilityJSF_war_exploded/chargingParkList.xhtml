@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:view>
+    <h:body>
+        <h1>Chargingparks</h1>
+        <p:commandButton value="back" onclick="window.history.go(-1)"/>
+        <p:dataTable var="park" value="#{chargingParkList.employees.chargingpark}">
+            <p:column headerText="ID">
+                <h:outputText value="#{park.id}" />
+            </p:column>
+            <p:column headerText="City">
+                <h:outputText value="#{park.address.city}" />
+            </p:column>
+            <p:column headerText="Details">
+                <p:commandButton value="Details" style="margin-left:20px;" onclick="#{chargingParkList.showDialog(park)}PF('dlg3').show();"/>
+            </p:column>
+        </p:dataTable>
+    </h:body>
+
+    <p:dialog header="Details of Park ##{chargingParkList.selectedChargingPark.id}" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="500">
+        <h:outputText value="Id: #{chargingParkList.selectedChargingPark.id}" /><br/>
+        <h:outputText value="Street: #{chargingParkList.selectedChargingPark.address.street} #{chargingParkList.selectedChargingPark.address.streetNr}" /><br/>
+        <h:outputText value="ZIP: #{chargingParkList.selectedChargingPark.address.zip}" /><br/>
+        <h:outputText value="City: #{chargingParkList.selectedChargingPark.address.city}" /><br/>
+        <h:outputText value="Federal State: #{chargingParkList.selectedChargingPark.address.federalState}" /><br/>
+        <h:outputText value="Country: #{chargingParkList.selectedChargingPark.address.country}" /><br/>
+    </p:dialog>
+</f:view>
+</html>

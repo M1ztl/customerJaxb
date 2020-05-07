@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:view>
+    <h:body>
+        <h1>Members</h1>
+        <p:commandButton value="back" onclick="window.history.go(-1)"/>
+        <p:dataTable var="member" value="#{memberList.members.member}">
+            <p:column headerText="ID">
+                <h:outputText value="#{member.id}" />
+            </p:column>
+            <p:column headerText="Firstname">
+                <h:outputText value="#{member.firstname}" />
+            </p:column>
+            <p:column headerText="Lastname">
+                <h:outputText value="#{member.lastname}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{member.email}" />
+            </p:column>
+            <p:column headerText="Details">
+                <p:commandButton value="Details" style="margin-left:20px;" onclick="#{memberList.showDialog(member)}PF('dlg3').show();"/>
+            </p:column>
+        </p:dataTable>
+    </h:body>
+
+    <p:dialog header="Details of #{memberList.selectedMember.firstname} #{memberList.selectedMember.lastname}" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="500">
+        <h:outputText value="Id: #{memberList.selectedMember.id}" /><br/>
+        <h:outputText value="Firstname: #{memberList.selectedMember.firstname}" /><br/>
+        <h:outputText value="Lastname: #{memberList.selectedMember.lastname}" /><br/>
+        <h:outputText value="Date registered: #{memberList.getDateFromMillis(memberList.selectedMember.dateRegistered)}" /><br/>
+        <h:outputText value="Active: #{memberList.selectedMember.active}" /><br/>
+        <h:outputText value="Email: #{memberList.selectedMember.email}" /><br/>
+        <h:outputText value="Phone: #{memberList.selectedMember.phone}" /><br/>
+        <h:outputText value="Street: #{memberList.selectedMember.address.street} #{memberList.selectedMember.address.streetNr}" /><br/>
+        <h:outputText value="ZIP: #{memberList.selectedMember.address.zip}" /><br/>
+        <h:outputText value="City: #{memberList.selectedMember.address.city}" /><br/>
+        <h:outputText value="Federal State: #{memberList.selectedMember.address.federalState}" /><br/>
+        <h:outputText value="Country: #{memberList.selectedMember.address.country}" /><br/>
+    </p:dialog>
+</f:view>
+</html>

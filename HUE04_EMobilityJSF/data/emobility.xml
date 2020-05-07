@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<emobility xmlns="http://www.emobility.org"
+           xmlns:xsdi="http://www.w3.org/2001/XMLSchema-instance"
+           xsdi:schemaLocation="http://www.emobility.org emobility.xsd">
+    <operator>
+        <name>Tesla</name>
+        <email>contact@tesla.com</email>
+        <phone>0018885183752</phone>
+        <chargingparks>
+            <chargingpark>
+                <id>1</id>
+                <address>
+                    <city>St. Valentin</city>
+                    <zip>4300</zip>
+                    <street>Rasthausstraße</street>
+                    <streetNr>3</streetNr>
+                    <federalState>NÖ</federalState>
+                    <country>AT</country>
+                </address>
+                <chargingstations>
+                    <chargingstation>
+                        <id>1</id>
+                        <connector>Type 2</connector>
+                        <maxPowerOut>250</maxPowerOut>
+                        <pricePerKwh>0.28</pricePerKwh>
+                        <inUse>false</inUse>
+                    </chargingstation>
+                    <chargingstation>
+                        <id>2</id>
+                        <connector>Type 2</connector>
+                        <maxPowerOut>250</maxPowerOut>
+                        <pricePerKwh>0.28</pricePerKwh>
+                        <inUse>false</inUse>
+                    </chargingstation>
+                    <chargingstation>
+                        <id>3</id>
+                        <connector>Type 2</connector>
+                        <maxPowerOut>250</maxPowerOut>
+                        <pricePerKwh>0.28</pricePerKwh>
+                        <inUse>false</inUse>
+                    </chargingstation>
+                </chargingstations>
+            </chargingpark>
+        </chargingparks>
+        <members>
+            <member>
+                <id>1</id>
+                <firstname>Michael</firstname>
+                <lastname>Hitzker</lastname>
+                <address>
+                    <city>Tragwein</city>
+                    <zip>4284</zip>
+                    <street>Hohensteg</street>
+                    <streetNr>5</streetNr>
+                    <federalState>OÖ</federalState>
+                    <country>AT</country>
+                </address>
+                <email>michael@michaelhitzker.at</email>
+                <phone>069917055634</phone>
+                <active>true</active>
+                <dateRegistered>1569490169001</dateRegistered>
+            </member>
+        </members>
+        <employees>
+            <employee>
+                <id>1</id>
+                <firstname>Max</firstname>
+                <lastname>Mustermann</lastname>
+                <address>
+                    <city>Wien</city>
+                    <zip>1010</zip>
+                    <street>Musterstrasse</street>
+                    <streetNr>31</streetNr>
+                    <federalState>Wien</federalState>
+                    <country>AT</country>
+                </address>
+                <email>max@mustermann.at</email>
+                <phone>0664300333</phone>
+                <dateJoined>1505858400000</dateJoined>
+                <quitted>false</quitted>
+                <discount>20</discount>
+            </employee>
+        </employees>
+        <address>
+            <city>Palo Alto</city>
+            <zip>94020</zip>
+            <street>Deer Creek Rd</street>
+            <streetNr>3500</streetNr>
+            <federalState>CA</federalState>
+            <country>US</country>
+        </address>
+    </operator>
+    <chargeManager>
+        <charges>
+            <charge>
+                <startDate>1565669183000</startDate>
+                <endDate>1565669483000</endDate>
+                <duration>5</duration>
+                <kwhCharged>20.83</kwhCharged>
+                <pricePerKwh>0.28</pricePerKwh>
+                <total>5.83</total>
+                <userId>1</userId>
+                <parkId>1</parkId>
+                <stationId>1</stationId>
+            </charge>
+        </charges>
+        <activeCharges></activeCharges>
+    </chargeManager>
+</emobility>

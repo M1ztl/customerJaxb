@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:view>
+    <h:body>
+        <h1>Employees</h1>
+        <p:commandButton value="back" onclick="window.history.go(-1)"/>
+        <p:dataTable var="employee" value="#{employeeList.employees.employee}">
+            <p:column headerText="ID">
+                <h:outputText value="#{employee.id}" />
+            </p:column>
+            <p:column headerText="Firstname">
+                <h:outputText value="#{employee.firstname}" />
+            </p:column>
+            <p:column headerText="Lastname">
+                <h:outputText value="#{employee.lastname}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{employee.email}" />
+            </p:column>
+            <p:column headerText="Details">
+                <p:commandButton value="Details" style="margin-left:20px;" onclick="#{employeeList.showDialog(employee)}PF('dlg3').show();"/>
+            </p:column>
+        </p:dataTable>
+    </h:body>
+
+    <p:dialog header="Details of #{employeeList.selectedEmployee.firstname} #{employeeList.selectedEmployee.lastname}" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="500">
+        <h:outputText value="Id: #{employeeList.selectedEmployee.id}" /><br/>
+        <h:outputText value="Firstname: #{employeeList.selectedEmployee.firstname}" /><br/>
+        <h:outputText value="Lastname: #{employeeList.selectedEmployee.lastname}" /><br/>
+        <h:outputText value="Date joined: #{employeeList.getDateFromMillis(employeeList.selectedEmployee.dateJoined)}" /><br/>
+        <h:outputText value="Quitted: #{employeeList.selectedEmployee.quitted}" /><br/>
+        <h:outputText value="Discount: #{employeeList.selectedEmployee.discount}%" /><br/>
+        <h:outputText value="Email: #{employeeList.selectedEmployee.email}" /><br/>
+        <h:outputText value="Phone: #{employeeList.selectedEmployee.phone}" /><br/>
+        <h:outputText value="Street: #{employeeList.selectedEmployee.address.street} #{employeeList.selectedEmployee.address.streetNr}" /><br/>
+        <h:outputText value="ZIP: #{employeeList.selectedEmployee.address.zip}" /><br/>
+        <h:outputText value="City: #{employeeList.selectedEmployee.address.city}" /><br/>
+        <h:outputText value="Federal State: #{employeeList.selectedEmployee.address.federalState}" /><br/>
+        <h:outputText value="Country: #{employeeList.selectedEmployee.address.country}" /><br/>
+    </p:dialog>
+</f:view>
+</html>
