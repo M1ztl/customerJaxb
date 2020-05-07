@@ -1,0 +1,21 @@
+<EnergieDataExport>
+	<CustomerList>
+		<Customer id="1" firstName="John" lastName="Doe">
+			<DataEntries>
+				<PowerRecord id="1" sellingUser="2" power="5.5" unit="kwh"/>
+				<PowerRecord id="2" sellingUser="2" power="5.1" unit="kwh"/>
+				<PowerRecord id="3" sellingUser="3" power="4.8" unit="kwh"/>
+				<PowerRecord id="4" sellingUser="2" power="8.4" unit="kwh"/>
+			</DataEntries>
+		</Customer>
+		<Customer id="2" firstName="Max" lastName="Mustermann">
+			<DataEntries>
+				<PowerRecord id="1" sellingUser="1" power="1.5" unit="kwh"/>
+				<PowerRecord id="2" sellingUser="1" power="0.1" unit="kwh"/>
+			</DataEntries>
+		</Customer>
+		<Customer id="3" firstName="Erika" lastName="Mustermann">
+			<DataEntries> </DataEntries>
+		</Customer>
+	</CustomerList>
+</EnergieDataExport>

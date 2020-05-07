@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EnergieDataExport" type="EnergieDataExportType"/>
+
+  <xs:complexType name="PowerRecordType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:integer" name="id" />
+        <xs:attribute type="xs:integer" name="sellingUser"/>
+        <xs:attribute type="xs:double" name="power" />
+        <xs:attribute type="xs:string" name="unit" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="DataEntriesType" mixed="true">
+    <xs:sequence>
+      <xs:element type="PowerRecordType" name="PowerRecord" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CustomerType">
+    <xs:sequence>
+      <xs:element type="DataEntriesType" name="DataEntries"/>
+    </xs:sequence>
+    <xs:attribute type="xs:integer" name="id"/>
+    <xs:attribute type="xs:string" name="firstName" />
+    <xs:attribute type="xs:string" name="lastName"/>
+  </xs:complexType>
+
+  <xs:complexType name="CustomerListType">
+    <xs:sequence>
+      <xs:element type="CustomerType" name="Customer" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EnergieDataExportType">
+    <xs:sequence>
+      <xs:element type="CustomerListType" name="CustomerList"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
